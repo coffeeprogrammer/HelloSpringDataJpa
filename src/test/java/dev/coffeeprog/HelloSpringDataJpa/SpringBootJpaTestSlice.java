@@ -37,7 +37,6 @@ public class SpringBootJpaTestSlice {
         assertThat(countBefore).isLessThan(countAfter);
     }
 
-
     @Order(2)
     @Test
     void testJpaTestSpliceTransaction() {

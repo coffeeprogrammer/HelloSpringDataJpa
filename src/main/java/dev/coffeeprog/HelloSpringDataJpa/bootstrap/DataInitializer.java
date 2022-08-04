@@ -3,8 +3,10 @@ package dev.coffeeprog.HelloSpringDataJpa.bootstrap;
 import dev.coffeeprog.HelloSpringDataJpa.domain.Book;
 import dev.coffeeprog.HelloSpringDataJpa.repositories.BookRepository;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+@Profile({"local", "default"})
 @Component
 public class DataInitializer implements CommandLineRunner{
 
@@ -16,6 +18,8 @@ public class DataInitializer implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
+        bookRepository.deleteAll();
+
         Book bookDDD = new Book("Domain Driven Design", "123", "RandomHouse");
 
         System.out.println("Id: " + bookDDD.getId() );
